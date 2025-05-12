@@ -22,6 +22,11 @@ print("\nAvailable Camp Options:")
 for key, camp in camp_options.items():
     print(f"{key}. {camp['name']} - {camp['days']} days, {camp['difficulty']}, ${camp['cost']}") 
 
+chosen_camp_key = ""
+while chosen_camp_key not in camp_options:
+    chosen_camp_key = input("Enter the number of your chosen activity (1, 2, or 3): ")
+    if chosen_camp_key not in camp_options:
+        print("Invalid choice. Please enter 1, 2, or 3.")
 
 
 
