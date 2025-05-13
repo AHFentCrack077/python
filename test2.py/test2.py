@@ -28,6 +28,13 @@ while chosen_camp_key not in camp_options:
     if chosen_camp_key not in camp_options:
         print("Invalid choice. Please enter 1, 2, or 3.")
 
+chosen_camp = camp_options[chosen_camp_key]
+
+print(f"\nYou have chosen: {chosen_camp['name']}")
+print(f"Details: {chosen_camp['days']} days, Difficulty: {chosen_camp['difficulty']}")
+
+meal_choice = input("Please enter your meal preference (e.g., standard, vegetarian, vegan): ")
+
 
 
 
