@@ -1,6 +1,6 @@
 print("Hello and welcome! ")
 
-camper_name = input("Enter your name")
+camper_name = input("Enter your name: ")
 
 camper_age = 0
 while not (5 <= camper_age <= 17):
@@ -10,7 +10,9 @@ while not (5 <= camper_age <= 17):
         if not (5 <= camper_age <= 17):
             print("Invalid age. Campers must be between 5 and 17 years old.")
     except ValueError:
-        print("Invalid input. Please enter a number for the age.") 
+        print("Invalid input. Please enter a number for the age.")
+
+print(f"\nHello, {camper_name}! You are {camper_age} years old.")
 
 camp_options = {
     "1": {"name": "Cultural immersion", "days": 5, "difficulty": "easy", "cost": 800},
@@ -20,7 +22,7 @@ camp_options = {
 
 print("\nAvailable Camp Options:")
 for key, camp in camp_options.items():
-    print(f"{key}. {camp['name']} - {camp['days']} days, {camp['difficulty']}, ${camp['cost']}") 
+    print(f"{key}. {camp['name']} - {camp['days']} days, {camp['difficulty']}, ${camp['cost']}")
 
 chosen_camp_key = ""
 while chosen_camp_key not in camp_options:
@@ -34,28 +36,38 @@ print(f"\nYou have chosen: {chosen_camp['name']}")
 print(f"Details: {chosen_camp['days']} days, Difficulty: {chosen_camp['difficulty']}")
 
 meal_choice = input("Please enter your meal preference (e.g., standard, vegetarian, vegan): ")
+
 transport_needed = ""
 while transport_needed.lower() not in ['yes', 'no']:
-    transport_needed = ()
     transport_needed = input("Will you need transport? (yes/no): ")
     if transport_needed.lower() not in ['yes', 'no']:
         print("Invalid input. Please enter 'yes' or 'no'.")
 
-Transport_cost = 80
-Transport = input("yes or no")
-if Transport.lower() == "yes":
-    print("")
-    transport_fee = Transport_cost
-elif Transport.lower() == "no":
-    print("")
-    transport_fee = 0
-else:
- confirm_attendance = ""
+transport_fee = 0
+if transport_needed.lower() == "yes":
+    transport_fee = 80
+
+confirm_attendance = ""
 while confirm_attendance.lower() not in ['yes', 'no']:
     confirm_attendance = input("Are you attending this camp? (yes/no): ")
     if confirm_attendance.lower() not in ['yes', 'no']:
         print("Invalid input. Please enter 'yes' or 'no'.")
 
+total_cost = chosen_camp['cost'] + transport_fee
+
+print("\n--- Registration Summary ---")
+print(f"Camper Name: {camper_name}")
+print(f"Camper Age: {camper_age}")
+print(f"Chosen Camp: {chosen_camp['name']}")
+print(f"Number of Days: {chosen_camp['days']}")
+print(f"Difficulty Level: {chosen_camp['difficulty']}")
+print(f"Meal Choice: {meal_choice}")
+print(f"Total Cost: ${total_cost}")
 
 
+if confirm_attendance.lower() == 'yes':
+    print("Decision: Attending")
+else:
+    print("Decision: Not Attending")
 
+print("Thank you for registering!")

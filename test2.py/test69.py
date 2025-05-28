@@ -1,6 +1,6 @@
-print("Hello and welcome! ")
+print("Hello and welcome!")
 
-camper_name = input("Enter your name")
+camper_name = input("Enter your name: ")
 
 camper_age = 0
 while not (5 <= camper_age <= 17):
@@ -13,6 +13,7 @@ while not (5 <= camper_age <= 17):
         print("Invalid input. Please enter a number for the age.")
 
 print(f"\nHello, {camper_name}! You are {camper_age} years old.")
+
 camp_options = {
     "1": {"name": "Cultural immersion", "days": 5, "difficulty": "easy", "cost": 800},
     "2": {"name": "Kayaking and pancakes", "days": 3, "difficulty": "moderate", "cost": 400},
@@ -42,19 +43,17 @@ while transport_needed.lower() not in ['yes', 'no']:
     if transport_needed.lower() not in ['yes', 'no']:
         print("Invalid input. Please enter 'yes' or 'no'.")
 
-total_cost = chosen_camp['cost']
-transport_cost = 80
-if transport_needed.lower() == 'yes':
-    transport_cost = 80
-    total_cost += transport_cost
-total_cost = chosen_camp['cost']
-print(f"\nTotal cost for {chosen_camp['name']}: ${total_cost}")
+transport_cost = 80 if transport_needed.lower() == "yes" else 0
 
 confirm_attendance = ""
 while confirm_attendance.lower() not in ['yes', 'no']:
     confirm_attendance = input("Are you attending this camp? (yes/no): ")
     if confirm_attendance.lower() not in ['yes', 'no']:
         print("Invalid input. Please enter 'yes' or 'no'.")
+
+total_cost = chosen_camp['cost'] + transport_cost
+
+print(f"\nSo your total cost is ${total_cost}.")
 
 print("\n--- Registration Summary ---")
 print(f"Camper Name: {camper_name}")
@@ -63,13 +62,8 @@ print(f"Chosen Camp: {chosen_camp['name']}")
 print(f"Number of Days: {chosen_camp['days']}")
 print(f"Difficulty Level: {chosen_camp['difficulty']}")
 print(f"Meal Choice: {meal_choice}")
+print(f"Transport Needed: {'Yes' if transport_cost else 'No'}")
 print(f"Total Cost: ${total_cost}")
+print(f"Decision: {'Attending' if confirm_attendance.lower() == 'yes' else 'Not Attending'}")
 
-if confirm_attendance.lower() == 'yes':
-    print("Decision: Attending")
-else:
-    print("Decision: Not Attending")
-
-print("Thank you for registering!")
-
-
+print("\nThank you for registering!")
